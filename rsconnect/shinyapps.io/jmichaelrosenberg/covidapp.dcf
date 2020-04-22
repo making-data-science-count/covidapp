@@ -5,8 +5,8 @@ account: jmichaelrosenberg
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2163918
-bundleId: 3050265
+bundleId: 3050289
 url: https://jmichaelrosenberg.shinyapps.io/covidapp/
-when: 1587566911.63057
+when: 1587567433.48336
 asMultiple: FALSE
 asStatic: FALSE
