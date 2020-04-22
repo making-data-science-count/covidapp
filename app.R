@@ -16,19 +16,26 @@ ui <- fluidPage(theme = shinytheme("paper"),
     tags$a(href="https://github.com/making-data-science-count/covidapp", "GitHub")
     ),
   p(),
-  p("This map is based upon the websites for 15,262 U.S. school districts, 14,093 (92.3%) for which we were able to identify a website. 
+  p("This map is based upon programatically accessing the websites for 15,262 U.S. school districts, 14,093 (92.3%) for which we were able to identify a website. 
     Of those 14,093 districts, 11,172 (79.2%) contained links to pages or attachments that mentioned COVID-19, coronavirus, or a closure; 
     10,025 (67.1%) contained links that mentioned only COVID-19 or coronavirus. 
-    Those links (28,085 in total, to COVID-19-related webpages and attachments, primarily PDFs) are available from ",
-    tags$a(href="https://github.com/making-data-science-count/covidapp", "GitHub")),
+    Those links (28,085 in total, to COVID-19-related webpages and attachments, primarily PDFs) are also available from GitHub."),
   p("Made by the ",
     tags$a(href="https://makingdatasciencecount.com", "Making Data Science Count Research Group"),
+    " at the ",
+    tags$a(href="https://utk.edu", "University of Tennessee, Knoxville"),
     " with ",
     tags$a(href="https://rutherfordlab.wordpress.com/", "Teomara (Teya) Rutherford"),
     ", ",
     tags$a(href="https://www.datalorax.com/", "Daniel Anderson"),
     "and ",
-    tags$a(href="https://ha-nguyen.net/", "Ha Nguyen"))
+    tags$a(href="https://ha-nguyen.net/", "Ha Nguyen")),
+  tags$a(
+    href="https://makingdatasciencecount.com", 
+    tags$img(src="mdsc-logo.png", 
+             width="15%",
+             height="15%")
+  )
 )
 
 server <- function(input, output, session) {
