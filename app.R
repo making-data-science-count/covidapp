@@ -1,35 +1,46 @@
 library(shiny)
 library(leaflet)
 library(readr)
+library(shinythemes)
 
 d <- read_csv("data-for-shiny.csv")
 
-r_colors <- rgb(t(col2rgb(colors()) / 255))
-names(r_colors) <- colors()
-
-ui <- fluidPage(
+ui <- fluidPage(theme = shinytheme("paper"),
   h2("U.S. School Districts' Responses to COVID-19"),
-  p("This map represents an attempt to document U.S. school districts' responses to the COVID-19 pandemic."),
-  leafletOutput("mymap"),
+  p("This map represents an attempt to document U.S. school districts' responses to the COVID-19 pandemic"),
+  tags$hr(),
+  leafletOutput("map", width = "60%"),
+  tags$hr(),
   p(),
-  p("All of the data used is available for use and re-use at https://github.com/making-data-science-count/covidapp)."),
-  p("Created by the Making Data Science Count Research Group at the University of Tennessee, Knoxville.")
+  p("All of the data used is available for use and re-use on ", 
+    tags$a(href="https://github.com/making-data-science-count/covidapp", "GitHub")
+    ),
+  p(),
+  p("This map is based upon the websites for 15,262 U.S. school districts, 14,093 (92.3%) for which we were able to identify a website. 
+    Of those 14,093 districts, 11,172 (79.2%) contained links to pages or attachments that mentioned COVID-19, coronavirus, or a closure; 
+    10,025 (67.1%) contained links that mentioned only COVID-19 or coronavirus. 
+    Those links (28,085 in total, to COVID-19-related webpages and attachments, primarily PDFs) are available from ",
+    tags$a(href="https://github.com/making-data-science-count/covidapp", "GitHub")),
+  p("Made by the ",
+    tags$a(href="https://makingdatasciencecount.com", "Making Data Science Count Research Group"),
+    " with ",
+    tags$a(href="https://rutherfordlab.wordpress.com/", "Teomara (Teya) Rutherford"),
+    ", ",
+    tags$a(href="https://www.datalorax.com/", "Daniel Anderson"),
+    "and ",
+    tags$a(href="https://ha-nguyen.net/", "Ha Nguyen"))
 )
 
 server <- function(input, output, session) {
   
-  # points <- eventReactive(input$recalc, {
-  #   cbind(rnorm(40) * 2 + 13, rnorm(40) + 48)
-  # }, ignoreNULL = FALSE)
-  # 
-  output$mymap <- renderLeaflet({
+  output$map <- renderLeaflet({
     
     leaflet() %>%
       addProviderTiles("CartoDB.Positron") %>% 
       setView(-97, 39, zoom = 4) %>% 
-      addCircleMarkers(data = dd,
-                       radius = .1,
-                       fillOpacity = .5,
+      addCircleMarkers(data = d,
+                       radius = .25,
+                       fillOpacity = .25,
                        #layerId = ~ncessch,
                        lng = ~longitude_district_2017_18,
                        lat = ~latitude_district_2017_18,
