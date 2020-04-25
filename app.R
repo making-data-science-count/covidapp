@@ -88,7 +88,7 @@ server <- function(input, output, session) {
                       position = "bottomleft",
                       width = 100,
                       offset.x = 13) %>%
-      setView(-97, 39, zoom = 4) %>% 
+      setView(-97, 39, zoom = 4.5) %>% 
       addCircles(radius = 2250,
                  fillOpacity = .5,
                  stroke = FALSE,
