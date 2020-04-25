@@ -6,8 +6,8 @@ library(shinythemes)
 d <- read_csv("data-for-shiny.csv")
 
 d$label <- paste(
-  "NCES School ID: <a href =",
-  "'https://nces.ed.gov/ccd/schoolsearch/school_list.asp?Search=1&InstName=&SchoolID=", 
+  "NCES District ID: <a href =",
+  "'https://nces.ed.gov/ccd/districtsearch/district_list.asp?Search=1&InstName=&DistrictID=", 
   d$nces_id, "'>", d$nces_id, "</a>", "<br/>",
   "District:", 
   "<a href =", "'", d$url, "'>", d$agency_name_district_2017_18,  
