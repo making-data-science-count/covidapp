@@ -79,6 +79,7 @@ server <- function(input, output, session) {
     leaflet() %>%
       addProviderTiles("CartoDB.Positron") %>% 
       leafem::addLogo(img = "mdsc-logo.png",
+                      url = "https://makingdatasciencecount.com",
                       position = "bottomleft",
                       width = 100,
                       offset.x = 13) %>%
