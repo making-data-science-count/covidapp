@@ -82,7 +82,8 @@ server <- function(input, output, session) {
   
   output$map <- renderLeaflet({
     
-    leaflet(d) %>%
+    leaflet(d,
+            options = leafletOptions(preferCanvas = TRUE)) %>%
       addProviderTiles(providers$CartoDB.Voyager) %>% 
       leafem::addLogo(img = "mdsc-logo.png",
                       url = "https://makingdatasciencecount.com",
