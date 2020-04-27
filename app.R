@@ -7,6 +7,7 @@ d <- read_csv("data-for-shiny.csv")
 
 d$covid_or_corona <- factor(d$covid_or_corona, levels = c(TRUE, FALSE, NA))
 levels(d$covid_or_corona) <- c("Yes", "No")
+d$covid_or_corona <- forcats::fct_explicit_na(d$covid_or_corona)
 
 pal <- colorFactor(c("#fc8d62", "#66c2a5"), c("Yes", "No"))
 
